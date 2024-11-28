@@ -1,0 +1,104 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000, #222);
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: 0.5rem;
+    box-shadow: 0 1.5rem 3rem -0.75rem rgba(0, 0, 0, 0.5);
+    height: 100%;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.slider img {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+    height: 100%;
+    width: 100%; /* Ensures full width coverage */
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slider img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.slider-nav {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider-nav a {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.slider-nav a.active {
+    background-color: #ff9900;
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.slider-nav a:hover {
+    opacity: 0.8;
+}
+
+.slider-prev,
+.slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-prev {
+    left: 1rem;
+}
+
+.slider-next {
+    right: 1rem;
+}
